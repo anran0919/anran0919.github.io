@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>C++等号操作符的重载.md | Anakin&#39;blogs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1234567891011121314151617181920212223```c++#include &amp;lt;iostream&amp;gt;#include &amp;quot;Book.h&amp;quot;using namespace std;/** * 重载等号操作符 */int main() &amp;#123;    Book b1(&amp;quot;chinese&amp;quot;);    Book b2(&amp;quot;m">
+<meta name="keywords" content="C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++等号操作符的重载.md">
+<meta property="og:url" content="http://yoursite.com/2018/01/26/C-等号操作符的重载-md/index.html">
+<meta property="og:site_name" content="Anakin&#39;blogs">
+<meta property="og:description" content="1234567891011121314151617181920212223```c++#include &amp;lt;iostream&amp;gt;#include &amp;quot;Book.h&amp;quot;using namespace std;/** * 重载等号操作符 */int main() &amp;#123;    Book b1(&amp;quot;chinese&amp;quot;);    Book b2(&amp;quot;m">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-01-26T08:58:06.996Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C++等号操作符的重载.md">
+<meta name="twitter:description" content="1234567891011121314151617181920212223```c++#include &amp;lt;iostream&amp;gt;#include &amp;quot;Book.h&amp;quot;using namespace std;/** * 重载等号操作符 */int main() &amp;#123;    Book b1(&amp;quot;chinese&amp;quot;);    Book b2(&amp;quot;m">
+  
+    <link rel="alternate" href="/atom.xml" title="Anakin&#39;blogs" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Anakin&#39;blogs</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Hello World</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-C-等号操作符的重载-md" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/26/C-等号操作符的重载-md/" class="article-date">
+  <time datetime="2018-01-26T08:54:16.000Z" itemprop="datePublished">2018-01-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      C++等号操作符的重载.md
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```c++</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &quot;Book.h&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 重载等号操作符</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line"></span><br><span class="line">    Book b1(&quot;chinese&quot;);</span><br><span class="line"></span><br><span class="line">    Book b2(&quot;math&quot;);</span><br><span class="line"></span><br><span class="line">    b2= b1;</span><br><span class="line">    b2.getName();</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```c++</span><br><span class="line">//</span><br><span class="line">// Created by 张安然 on 2018/1/26.</span><br><span class="line">//</span><br><span class="line"></span><br><span class="line">#pragma once</span><br><span class="line"></span><br><span class="line">class Book &#123;</span><br><span class="line"></span><br><span class="line">public:</span><br><span class="line"></span><br><span class="line">    // 有参构造函数</span><br><span class="line">    Book(char * str =&quot;&quot;);</span><br><span class="line">    // 拷贝构造函数</span><br><span class="line">    Book(Book &amp; book);</span><br><span class="line"></span><br><span class="line">    void getName();</span><br><span class="line"></span><br><span class="line">    // 重载等号操作符</span><br><span class="line">     Book &amp; operator=(Book &amp; book);</span><br><span class="line"></span><br><span class="line">    ~Book();</span><br><span class="line">private:</span><br><span class="line">    int m_len;</span><br><span class="line">    char * name;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```c++</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &quot;Book.h&quot;</span><br><span class="line"></span><br><span class="line">Book::Book(char *str) &#123;</span><br><span class="line">    m_len= strlen(str)+1;</span><br><span class="line">    name = new char[m_len];</span><br><span class="line">    strcpy(name,str);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 拷贝构造函数</span><br><span class="line">Book::Book(Book &amp;book) &#123;</span><br><span class="line">    this-&gt;m_len=book.m_len+1;</span><br><span class="line">    this-&gt;name = new char[this-&gt;m_len];</span><br><span class="line">    strcpy(this-&gt;name,book.name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Book::~Book() &#123;</span><br><span class="line">    if(this-&gt;name!=NULL)&#123;</span><br><span class="line">        delete (name);</span><br><span class="line">        m_len = 0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Book::getName() &#123;</span><br><span class="line"></span><br><span class="line">    std::cout&lt;&lt; &quot; name :: &quot; &lt;&lt; name &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Book&amp;  Book::operator=(Book &amp;book) &#123;</span><br><span class="line">    if(this-&gt;name!=NULL)&#123;</span><br><span class="line">        delete(this-&gt;name);</span><br><span class="line">        m_len=0;</span><br><span class="line">    &#125;</span><br><span class="line">    // 重新拷贝</span><br><span class="line">    this-&gt;m_len= book.m_len+1;</span><br><span class="line">    this-&gt;name=new char[this-&gt;m_len];</span><br><span class="line">    strcpy(this-&gt;name,book.name);</span><br><span class="line"></span><br><span class="line">    return *this;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/01/26/C-等号操作符的重载-md/" data-id="cjcvp3k8u0000e191je5v5sng" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/01/25/C-的深拷贝的应用-数组类的拷贝-md/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">C++的深拷贝的应用-数组类的拷贝.md</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 10px;">C++</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/01/26/C-等号操作符的重载-md/">C++等号操作符的重载.md</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/25/C-的深拷贝的应用-数组类的拷贝-md/">C++的深拷贝的应用-数组类的拷贝.md</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 anran0919@gmail.com<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
